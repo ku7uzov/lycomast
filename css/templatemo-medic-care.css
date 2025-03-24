@@ -97,7 +97,7 @@ h6 {
 }
 
 p {
-  color: var(--p-color);
+  color: black;
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-light);
   letter-spacing: 0.5px;
@@ -292,9 +292,9 @@ strong {
 }
 
 .featured-text {
-  font-size: var(--h6-font-size);
+  
   line-height: 2rem;
-  font-weight: var(--font-weight-bold);
+  
   text-align: center;
   margin-bottom: 0;
 }
@@ -436,7 +436,7 @@ strong {
 } 
 
 .timeline h3 {
-  background: var(--dark-color);
+  background: #D33011;
 }
 
 .timeline::before {
