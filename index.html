@@ -65,7 +65,7 @@
       </style>
         <main>
 
-          <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+          <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg" id="navbar">
             <div class="container d-flex justify-content-between align-items-center">
                 <a class="navbar-brand d-none d-lg-block" href="index.html">
                     <img src="images/logo.png" style="height: 65px;">
@@ -178,7 +178,7 @@
             <section class="section-padding pb-0" id="timeline">
                 <div class="container">
                     <div class="row">
-                        <h3 class="text-center mb-lg-5 mb-4">Какие бывают проблемы</h3>
+                        <h3 class="text-center mb-lg-5 mb-4 mt-4">Какие бывают проблемы</h3>
                         
                         <div class="timeline">
                             <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
@@ -575,74 +575,63 @@
 
 
 </style>
-    <style>
-                .modal {
-                    display: none; /* Изначально окно скрыто */
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон */
-                    z-index: 1000;
-                    justify-content: center;
-                    align-items: center;
-                    opacity: 0; /* Начальная прозрачность */
-                    transition: opacity 0.5s ease; /* Плавное изменение прозрачности */
-                }
-
-                /* Контейнер модального окна */
-                .modal-content {
-                    background-color: #fff;
-                    padding: 20px;
-                    border-radius: 10px;
-                    text-align: center;
-                    width: 100%;
-                    max-width: 1200px;
-                    max-height: 80%;
-                    overflow: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                /* Картинка внутри модального окна */
-                .modal-image {
-                    max-width: 100%;
-                    max-height: 60%;
-                    margin-bottom: 20px;
-                    border-radius: 10px;
-                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                }
-
-                /* Кнопка закрытия */
-                .close-btn {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                    font-size: 30px;
-                    color: black;
-                    cursor: pointer;
-                }
-
-                /* Кнопка для перехода */
-                .modal-link {
-                    display: inline-block;
-                    padding: 12px 24px;
-                    background-color: #008CBA;
-                    color: white;
-                    text-decoration: none;
-                    font-size: 16px;
-                    border-radius: 5px;
-                    margin-top: 20px;
-                    transition: background-color 0.3s, transform 0.3s;
-                }
-
-                .modal-link:hover {
-                    background-color: #005f73;
-                    transform: scale(1.05);
-                }
+    <style>/* Модальное окно */
+      .modal {
+          display: none; /* Скрыто по умолчанию */
+          position: fixed; /* Фиксированное расположение на экране */
+          top: 130;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+          z-index: 1000; /* Чтобы окно было поверх остальных элементов */
+          justify-content: center;
+          align-items: center;
+          overflow: hidden; /* Чтобы не выходило за пределы */
+      }
+      
+      /* Контент модального окна */
+      .modal-content {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          max-width: 80%; /* Максимальная ширина окна */
+          max-height: 90%; /* Максимальная высота окна */
+          overflow-y: auto; /* Прокрутка, если контент не помещается */
+          text-align: center;
+      }
+      
+      /* Кнопка закрытия */
+      .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 30px;
+          font-weight: bold;
+          cursor: pointer;
+      }
+      
+      /* Стили для изображений и ссылок */
+      .modal-image {
+          max-width: 100%;
+          height: auto;
+      }
+      .modal-link {
+          display: inline-block;
+          margin-top: 20px;
+          padding: 10px 20px;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+      }
+      
+      /* Мобильная версия */
+      @media (max-width: 768px) {
+          .modal-content {
+              width: 90%; /* Немного уменьшаем окно на мобильных устройствах */
+              max-width: 100%;
+          }
+      }
   </style>
             <style>
      
@@ -714,25 +703,36 @@
             </style>
         
       <script>
-         // Функция для отображения модального окна
-         function showModal() {
-            const modal = document.getElementById('modal');
-            
-            // Задержка перед показом окна (4 секунды после захода на сайт)
-            setTimeout(() => {
-                modal.style.display = 'flex';  // Показываем окно
-                modal.style.opacity = 1;  // Плавно устанавливаем прозрачность
-            }, 2000);  // Задержка 4000 мс (4 секунды)
+    // Функция для отображения модального окна
+function showModal() {
+    const modal = document.getElementById('modal');
+    const navbar = document.getElementById('navbar'); // Получаем навигационную панель
+    
+    // Задержка перед показом окна (2 секунды после захода на сайт)
+    setTimeout(() => {
+        if (navbar) {
+            navbar.style.display = 'none'; // Скрываем navbar
         }
 
-        // Закрытие модального окна
-        document.getElementById('closeModalBtn').addEventListener('click', () => {
-            const modal = document.getElementById('modal');
-            modal.style.opacity = 0;  // Снимаем прозрачность
-            setTimeout(() => {
-                modal.style.display = 'none';  // Скрываем окно после завершения анимации
-            }, 500);  // Ждём 0.5 секунды до полного скрытия окна
-        });
+        modal.style.display = 'flex';  // Показываем окно
+        modal.style.opacity = 1;  // Плавно устанавливаем прозрачность
+    }, 2000);  // Задержка 2000 мс (2 секунды)
+}
+
+// Закрытие модального окна
+document.getElementById('closeModalBtn').addEventListener('click', () => {
+    const modal = document.getElementById('modal');
+    const navbar = document.getElementById('navbar'); // Получаем навигационную панель
+    
+    modal.style.opacity = 0;  // Снимаем прозрачность
+    setTimeout(() => {
+        modal.style.display = 'none';  // Скрываем окно после завершения анимации
+        if (navbar) {
+            navbar.style.display = 'block'; // Показываем navbar снова
+        }
+    }, 0);  // Ждём 0.5 секунды до полного скрытия окна
+});
+
       </script>
 <script>
     document.getElementById('surveyForm').addEventListener('submit', function (e) {

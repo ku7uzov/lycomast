@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /login
+Disallow: /my-order
+Disallow: /order/
+Disallow: /all-orders
+Disallow: /confirm
+Disallow: /cancel
+Disallow: /forbidden
+
+Allow: /
+Allow: /register
+Allow: /discounts
+Allow: /reviews
+Allow: /payment_delivery
+Allow: /faq
+Allow: /about-us
+Allow: /partnership
+Allow: /contacts
+Allow: /privacy-policy
+Allow: /program/
