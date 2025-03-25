@@ -98,7 +98,6 @@ h6 {
 
 p {
   color: black;
-  font-size: var(--p-font-size);
   font-weight: var(--font-weight-light);
   letter-spacing: 0.5px;
 }
